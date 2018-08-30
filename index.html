@@ -37,6 +37,24 @@
     }
   </script>
 
-<script type="text/javascript" src="runtime.a66f828dca56eeb90e02.js"></script><script type="text/javascript" src="polyfills.2f4a59095805af02bd79.js"></script><script type="text/javascript" src="main.c588d8ce98c53165433d.js"></script></body>
+  <script>
+$(document).ready(function(){
+    var from,to,subject,text;
+    $("#submit").click(function(){      
+        to=$("#email").val();
+        subject=$("#subject").val();
+        text=$("#message").val();
+        $("#status").text("Sending E-mail...Please wait");
+        $.get("http://localhost:3000/send",{to:to,subject:subject,text:text},function(data){
+        if(data=="sent")
+        {
+            $("#status").empty().html("Email is been sent at "+to+" . Please check inbox!");
+        }
+});
+    });
+});
+</script>
+
+<script type="text/javascript" src="runtime.a66f828dca56eeb90e02.js"></script><script type="text/javascript" src="polyfills.2f4a59095805af02bd79.js"></script><script type="text/javascript" src="main.4176cbd23ccd1273701a.js"></script></body>
 
 </html>
